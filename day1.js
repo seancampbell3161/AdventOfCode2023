@@ -34,21 +34,17 @@ const result = () => {
 
         if (nums.length === 0) return acc;
 
+        let strResult = '';
+
         if (nums.length < 2) {
-            const filteredNum = nums[0].split('')[0];
-            nums.splice(0, 1, filteredNum);
-            
-            const result = filteredNum + filteredNum;
-            return acc + Number(result);
+            const filteredNum = nums[0].split('')[0]; // ensure first num is single digit
+            strResult = filteredNum + filteredNum;
         } else {
             const firstNum = nums[0].split('')[0];
-            const lastNum = nums.pop().split('').pop();
-            nums.splice(0, 1, firstNum);
-            nums.push(lastNum);
-            
-            const result = firstNum + lastNum;
-            return acc + Number(result);
-        }       
+            const lastNum = nums.pop().split('').pop(); // ensure last num is single digit
+            strResult = firstNum + lastNum;
+        }
+        return acc + Number(strResult);
     }, 0)
 }
 
